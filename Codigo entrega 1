@@ -1,0 +1,69 @@
+# MCOC2020-P1
+Repositorio proyecto 1
+  
+import scipy as sp  
+from scipy.integrate import odeint  
+  
+#Parametros:  
+      
+cm = 0.01  #m  
+#Masa  
+m = 5 #kg  
+g = 9.81 #m/s**2  
+#Coeficiente de arrastre  
+rho = 1.225  #kg/m**3  
+cd = 0.47  
+D = 21.6*cm    
+r = D/2  
+A = sp.pi * r**2  
+CD = 0.5*rho*cd*A  
+  
+#Viento:  
+#V1 = 0 m/s  
+#V2 = 10.0 m/s  
+#V3 = 20.0 m/s  
+  
+def bala(z,t):  
+    zp = sp.zeros(4)  
+      
+    zp[0] = z[2]  
+    zp[1] = z[3]  
+      
+    v = z[2:4]  #saca las ultimas dos componentes  
+    v[0] = v[0] - V  
+    v2 = sp.dot(v,v)  
+    vnorm = sp.sqrt(v2)  
+    FD = CD * v2 * (v/vnorm)  
+    zp[2] = FD[0]/m  
+    zp[3] = FD[1]/m-g  
+      
+    return zp  
+  
+#vector de tiempo:  
+t = sp.linspace(0, 10, 1001)  
+      
+#Parte en el origen y tiene vx = vy = 2 m/s  
+vi = 100*1000/3600.  
+z0 = sp.array([0,0,vi,vi])  
+   
+velocidades = [0,10,20]     
+sol = []  
+for V in velocidades:  
+    sol.append(odeint(bala,z0,t))  
+  
+import matplotlib.pylab as plt  
+leyendas = ["V = 0 m/s","V = 10 m/s","V = 20 m/s"]  
+for i in range(3):  
+    x = sol[i][:,0]  
+    y = sol[i][:,1]  
+  
+    plt.figure(1)  
+    plt.plot(x,y,label = leyendas[i])  
+    plt.legend()  
+    plt.title("Trayectoria para distintos vientos")  
+    plt.xlabel("X (m)")  
+    plt.ylabel("Y (m)")  
+    plt.grid(True)  
+    plt.axis([0,160,0,50])  
+plt.savefig("balistica.png")  
+plt.show()  
