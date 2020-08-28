@@ -127,30 +127,10 @@ pos_final = np.array([x_f, y_f, z_f, vx_f, vy_f, vz_f]) - sol[-1]
 for el in pos_final:
     print(el)
     
-"""H = sqrt(x[:, 0]**2 + x[:, 1]**2 + x[:, 2]**2) - Radio
-
-figure()
-
-for i in range(3):
-    subplot(3, 1, 1 + i)
-    grid(True)
-    plot(t / hr, x[:, i])
-    
-figure()
-grid(True)
-plot(t / hr, H / km)
-axhline(80., linestyle="- -")
-axhline(0., linestyle="- -", linewidth=2)
-
-figure()
-grid(True)
-plot(x[:, 0], x[:, 1])
-
-th = linspace(0, 2 * pi, 400)
-
-axis("equal")
-
-fig = plt.figure()
-ax.plt.axes(projection="3d")
-ax.plot3D(x[:, 0], x[:, 1], x[:, 2])
-show()"""
+Esto imprime:   
+-3931.065764593659  
+1274115.3245973391  
+1615039.8587262174  
+801.9830473104435  
+1612.3647932027352  
+-1263.4685671859006  
