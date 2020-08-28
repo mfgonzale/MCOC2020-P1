@@ -108,3 +108,8 @@ plt.plot(t,np.sqrt(x**2 + y**2 + z**2))
 #plt.axvline(6371000+80000, color='g', linestyle='-', label = "Atmósfera")
 plt.savefig("satelite5.png")
 plt.show()
+  
+  
+Comentarios:  
+    Para conseguir vt se tuvo probar con distintos valores para ver la velocidad minima necesaria para que la órbita del satelite no variara de su forma eliptica, y por ende, no caiga hacia la atmosfera terrestre.  
+    Finalmente, vt minimo es 25000 m/s  
