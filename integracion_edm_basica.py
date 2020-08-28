@@ -45,7 +45,7 @@ def satelite(z,t):
     return zp
 
 #Condicion inicial:
-vt = 25000/3.6 #m/s
+vt = 24548/3.6 #m/s
 z0 = np.array([r,0,0,0,vt,0])  #x, y, z, vx, vy, vz
  
 
@@ -102,14 +102,13 @@ plt.xlabel("Tiempo (s)")
 plt.grid(True)
 
 plt.plot(t,np.sqrt(x**2 + y**2 + z**2))
-#Los siguientes codigos para trazar la superficie de la Tierra y la atmosfera
-#sobreescribían la función r(t) por lo que no pude incluirlo en el gráfico
-#plt.axvline(x = 6371000.0, color='r')
-#plt.axvline(6371000+80000, color='g', linestyle='-', label = "Atmósfera")
+plt.axhline(y = 6371000.0, color='r', label = "Superficie Tierra")
+plt.axhline(y = 6371000.0+80000.0, color='g', linestyle='-', label = "Atmósfera")
+plt.legend()
 plt.savefig("satelite5.png")
 plt.show()
   
   
 Comentarios:  
     Para conseguir vt se tuvo probar con distintos valores para ver la velocidad minima necesaria para que la órbita del satelite no variara de su forma eliptica, y por ende, no caiga hacia la atmosfera terrestre.  
-    Finalmente, vt minimo es 25000 m/s  
+    Finalmente, vt minimo es 24548 m/s  
